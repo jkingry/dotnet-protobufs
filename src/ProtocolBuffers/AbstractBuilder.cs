@@ -65,51 +65,73 @@ namespace Google.ProtocolBuffers {
     #endregion
 
     #region Implementation of methods which don't require type parameter information
-    public IMessage WeakBuild() {
+    IMessage IBuilder.WeakBuild()
+    {
       return Build();
     }
 
-    public IBuilder WeakAddRepeatedField(FieldDescriptor field, object value) {
+    IBuilder IBuilder.WeakAddRepeatedField(FieldDescriptor field, object value)
+    {
       return AddRepeatedField(field, value);
     }
 
-    public IBuilder WeakClear() {
+    IBuilder IBuilder.WeakClear()
+    {
       return Clear();
     }
 
-    public IBuilder WeakMergeFrom(IMessage message) {
+    IBuilder IBuilder.WeakMergeDelimitedFrom(Stream stream)
+    {
+        return MergeDelimitedFrom(stream);
+    }
+
+    IBuilder IBuilder.WeakMergeDelimitedFrom(Stream stream, ExtensionRegistry extensionRegistry)
+    {
+        return MergeDelimitedFrom(stream, extensionRegistry);
+    }
+
+    IBuilder IBuilder.WeakMergeFrom(IMessage message)
+    {
       return MergeFrom(message);
     }
 
-    public IBuilder WeakMergeFrom(CodedInputStream input) {
+    IBuilder IBuilder.WeakMergeFrom(CodedInputStream input)
+    {
       return MergeFrom(input);
     }
 
-    public IBuilder WeakMergeFrom(CodedInputStream input, ExtensionRegistry registry) {
+    IBuilder IBuilder.WeakMergeFrom(CodedInputStream input, ExtensionRegistry registry)
+    {
       return MergeFrom(input, registry);
     }
 
-    public IBuilder WeakMergeFrom(ByteString data) {
+    IBuilder IBuilder.WeakMergeFrom(ByteString data)
+    {
       return MergeFrom(data);
     }
 
-    public IBuilder WeakMergeFrom(ByteString data, ExtensionRegistry registry) {
+    IBuilder IBuilder.WeakMergeFrom(ByteString data, ExtensionRegistry registry)
+    {
       return MergeFrom(data, registry);
     }
 
-    public IMessage WeakBuildPartial() {
+    IMessage IBuilder.WeakBuildPartial()
+    {
       return BuildPartial();
     }
 
-    public IBuilder WeakClone() {
+    IBuilder IBuilder.WeakClone()
+    {
       return Clone();
     }
 
-    public IMessage WeakDefaultInstanceForType {
+    IMessage IBuilder.WeakDefaultInstanceForType
+    {
       get { return DefaultInstanceForType; } 
     }
 
-    public IBuilder WeakClearField(FieldDescriptor field) {
+    IBuilder IBuilder.WeakClearField(FieldDescriptor field)
+    {
       return ClearField(field);
     }
     #endregion

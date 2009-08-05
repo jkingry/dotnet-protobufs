@@ -115,9 +115,12 @@ namespace Google.ProtocolBuffers {
     IBuilder CreateBuilderForField(FieldDescriptor field);
 
     #region Methods which are like those of the generic form, but without any knowledge of the type parameters
+
     IBuilder WeakAddRepeatedField(FieldDescriptor field, object value);
     IBuilder WeakClear();
     IBuilder WeakClearField(FieldDescriptor field);
+    IBuilder WeakMergeDelimitedFrom(Stream input);
+    IBuilder WeakMergeDelimitedFrom(Stream input, ExtensionRegistry extensionRegistry);     
     IBuilder WeakMergeFrom(IMessage message);
     IBuilder WeakMergeFrom(ByteString data);
     IBuilder WeakMergeFrom(ByteString data, ExtensionRegistry registry);
